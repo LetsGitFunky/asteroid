@@ -1,5 +1,3 @@
-export default MovingObject;
-
 class MovingObject {
     constructor({ pos, vel, radius, color }) {
         this.pos = pos;
@@ -17,9 +15,10 @@ class MovingObject {
     }
 }
 
+export default MovingObject;
 // MovingObject.prototype.draw = function(ctx) {
 //     return new MovingObject(
-        
+
 //     )
 // }
 
@@ -33,5 +32,3 @@ class MovingObject {
     //     radius: 5,
     //     color: "#00FF00"
     // });
-
-
