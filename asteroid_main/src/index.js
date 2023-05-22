@@ -1,6 +1,7 @@
 // console.log("hello")
 
 import MovingObject from "./moving_object";
+import Asteroid from "./asteroid";
 
 window.MovingObject = MovingObject;
 
@@ -24,5 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Draw the MovingObject
     mo.draw(ctx);
+
+    const ast = new Asteroid( {
+        pos: [30, 30]
+    })
+
+    ast.draw(ctx);
 
 })
