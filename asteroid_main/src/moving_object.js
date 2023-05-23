@@ -13,6 +13,8 @@ class MovingObject {
         ctx.fill();
         ctx.closePath();
     }
+
+    // move()
 }
 
 export default MovingObject;

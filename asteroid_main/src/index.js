@@ -2,6 +2,8 @@
 
 import MovingObject from "./moving_object";
 import Asteroid from "./asteroid";
+import Game from "./game";
+import GameView from './game_view';
 
 window.MovingObject = MovingObject;
 
@@ -32,4 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ast.draw(ctx);
 
+    // const gogo = new Game();
+
+    // gogo.draw(ctx)
+
+    const game = new Game();
+    const gameView = new GameView(game, ctx);
+    gameView.start();
 })

@@ -20,13 +20,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _asteroid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n\n\nclass Game {\n    static DIM_X = 50;\n    static DIM_Y = 50;\n    static NUM_ASTEROIDS = 10;\n\n    constructor() {\n        this.dim_x = Game.DIM_X;\n        this.dim_y = Game.DIM_Y;\n        this.num_asteroids = Game.NUM_ASTEROIDS;\n        this.asteroids = [];\n\n        this.addAsteroids();\n    }\n\n    randomPosition() {\n        return [\n            Math.floor(Math.random() * this.dim_x),\n            Math.floor(Math.random() * this.dim_y)\n        ];\n    }\n\n    addAsteroids() {\n        for (let i = 0; i < this.num_asteroids; i++) {\n            this.asteroids.push(\n                new _asteroid__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({pos: this.randomPosition() })\n            )\n        }\n    }\n\n    draw(ctx) {\n        ctx.clearRect(0, 0, this.dim_x, this.dim_y)\n        this.asteroids.forEach(asteroid => {\n            asteroid.draw(ctx);\n        })\n    }\n\n    moveObjects() {\n        \n    }\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);\n\n\n//# sourceURL=webpack://asteroid_main/./src/game.js?");
+
+/***/ }),
+
+/***/ "./src/game_view.js":
+/*!**************************!*\
+  !*** ./src/game_view.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\n\nclass GameView {\n    constructor(game, ctx) {\n        this.game = game;\n        this.ctx = ctx;\n    }\n\n    start() {\n        // Call this.game.moveObjects and this.game.draw every 20 ms\n        setInterval(() => {\n            this.game.moveObjects();\n            this.game.draw(this.ctx);\n        }, 20);\n    }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameView);\n\n\n//# sourceURL=webpack://asteroid_main/./src/game_view.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _moving_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n/* harmony import */ var _asteroid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n// console.log(\"hello\")\n\n\n\n\nwindow.MovingObject = _moving_object__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n    const canvasEl = document.getElementById(\"game-canvas\")\n    canvasEl.width = 500;\n    canvasEl.height = 700;\n    const ctx = canvasEl.getContext(\"2d\")\n    ctx.fillStyle = \"black\";\n    ctx.fillRect(0, 0, 500, 700);\n\n    ctx.fillStyle = \"pink\"\n    ctx.fillRect(50, 50, 80, 80)\n\n    const mo = new _moving_object__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n        pos: [200, 200],\n        vel: [10, 10],\n        radius: 50,\n        color: \"#00FF00\"\n    });\n\n    // Draw the MovingObject\n    mo.draw(ctx);\n\n    const ast = new _asteroid__WEBPACK_IMPORTED_MODULE_1__[\"default\"]( {\n        pos: [30, 30]\n    })\n\n    ast.draw(ctx);\n\n})\n\n\n//# sourceURL=webpack://asteroid_main/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _moving_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n/* harmony import */ var _asteroid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game */ \"./src/game.js\");\n/* harmony import */ var _game_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game_view */ \"./src/game_view.js\");\n// console.log(\"hello\")\n\n\n\n\n\n\nwindow.MovingObject = _moving_object__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n    const canvasEl = document.getElementById(\"game-canvas\")\n    canvasEl.width = 500;\n    canvasEl.height = 700;\n    const ctx = canvasEl.getContext(\"2d\")\n    ctx.fillStyle = \"black\";\n    ctx.fillRect(0, 0, 500, 700);\n\n    ctx.fillStyle = \"pink\"\n    ctx.fillRect(50, 50, 80, 80)\n\n    const mo = new _moving_object__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n        pos: [200, 200],\n        vel: [10, 10],\n        radius: 50,\n        color: \"#00FF00\"\n    });\n\n    // Draw the MovingObject\n    mo.draw(ctx);\n\n    const ast = new _asteroid__WEBPACK_IMPORTED_MODULE_1__[\"default\"]( {\n        pos: [30, 30]\n    })\n\n    ast.draw(ctx);\n\n    // const gogo = new Game();\n\n    // gogo.draw(ctx)\n\n    const game = new _game__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\n    const gameView = new _game_view__WEBPACK_IMPORTED_MODULE_3__[\"default\"](game, ctx);\n    gameView.start();\n})\n\n\n//# sourceURL=webpack://asteroid_main/./src/index.js?");
 
 /***/ }),
 
